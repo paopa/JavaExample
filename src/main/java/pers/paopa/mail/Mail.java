@@ -13,7 +13,6 @@ public class Mail {
         int port = 587;
         String username = "david.wang@kyperdata.com";
         String password = "123qweas";
-        String objMail = "david840422@gmail.com";
 
         Properties props = new Properties();
         props.put("mail.smtp.auth","true");
@@ -27,12 +26,14 @@ public class Mail {
             }
         });
 
+        //send mail service
         try{
+            String objMail = "david840422@gmail.com";
             Message message = new MimeMessage(session);
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(objMail));
 
             message.setSubject("測試標題"+new Date());
-            message.setContent("<h1>測試內容<h1>","text/html; charset = UTF-8");
+            message.setContent("<h1>測試內容<h1> <p>測試內容</p>","text/html; charset = UTF-8");
 
             Transport.send(message);
         } catch (MessagingException e) {
