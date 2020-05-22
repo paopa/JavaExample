@@ -6,3 +6,12 @@ Test something at here
 command line backup
  
 search at log
+
+---
+download file from server
+```
+scp <host>:<file path> <local path>
+```
+ex:\
+scp david@sygps.dev.sis.ai:~/application.yml .
+---
