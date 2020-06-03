@@ -16,6 +16,10 @@ public class LruTest {
                 System.out.println(lru.name + " = " + lru.count));
     }
 
+    private static String[] createTestData() {
+        return new String[]{"a", "b", "d", "c", "a", "d", "a", "d","d", "a", "d", "b", "c", "c", "c", "c", "b", "d"};
+    }
+
     private static List<LruObject> inputInObjectList(Map<String, Long> lruCountMap) {
         List<LruObject> lruObjectList = new ArrayList<>();
         for (String value : lruCountMap.keySet()) {
@@ -25,10 +29,6 @@ public class LruTest {
             lruObjectList.add(lru);
         }
         return lruObjectList;
-    }
-
-    private static String[] createTestData() {
-        return new String[]{"a", "b", "d", "c", "a", "d", "a", "d","d", "a", "d", "b", "c", "c", "c", "c", "b", "d"};
     }
 
     private static void inputInListAndMap(String[] data, List<String> lruList, Map<String, Long> lruCountMap) {
@@ -44,8 +44,8 @@ public class LruTest {
             }
         }
     }
-
     static class LruObject implements Comparable<LruObject> {
+
         private String name;
         private Long count;
 
