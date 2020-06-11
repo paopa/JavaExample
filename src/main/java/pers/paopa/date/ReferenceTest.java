@@ -6,18 +6,22 @@ package pers.paopa.date;
  */
 public class ReferenceTest {
     public static void main(String[] args) {
+        Long aLong = 10L;
         String a = "123";
         b b = new b();
-        test(a, b);
+        test(a, b, aLong);
         System.out.println(a);
+        System.out.println(aLong);
         System.out.println(b.getC() + "&&" + b.getD());
     }
 
-    private static void test(String a, b b) {
+    private static void test(String a, b b, Long aLong) {
         a = a + "abc";
+        aLong++;
         b.setC(99L);
         b.setD("david");
         System.out.println(a);
+        System.out.println(aLong);
         System.out.println(b.getC() + "&&" + b.getD());
     }
 }
