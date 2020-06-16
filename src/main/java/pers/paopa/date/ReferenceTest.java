@@ -6,6 +6,7 @@ package pers.paopa.date;
  */
 public class ReferenceTest {
     public static void main(String[] args) {
+        System.out.println(Integer.MAX_VALUE);
         Long aLong = 10L;
         String a = "123";
         b b = new b();
