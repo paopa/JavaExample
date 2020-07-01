@@ -1,10 +1,8 @@
 package pers.paopa.parser;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.format.DateTimeParseException;
 import java.util.Calendar;
-import java.util.Date;
 
 public class TimestampTest {
     public static void main(String[] args) throws ParseException {
@@ -16,26 +14,23 @@ public class TimestampTest {
         // 1592975565 :2020
         // 1750741965 :2025
         // 1908508365 :2030
-        System.out.println(TimestampPointUtil.getIsTimestampPoint("1908508365"));
+//        for (TimestampRangeEnum rangeEnum : TimestampRangeEnum.values()) {
+//            System.out.println(rangeEnum.getTimestamp() + " " + rangeEnum.getPoint());
+//        }
+//
+//        for (TimestampSplit sp : TimestampSplit.values()) {
+//            System.out.println(sp.getSecond() + " " + sp.getPoint());
+//        }
+
+        System.out.println(TimestampPointUtil.getIsTimestampPoint("631151999"));
     }
 }
 
 class TimestampPointUtil {
 
-    public static final long[] TIMESTAMP_RANGE = {
-            631152000,//1990:0
-            946684800,//2000:1
-            1262304000,//2010:3
-            (System.currentTimeMillis() / 1000),//now:5
-            (getTimestampAfterYears(5)),//now+5:3
-            (getTimestampAfterYears(10))//now+10:1
-    };
+    public static final TimestampRangeEnum[] TIMESTAMP_RANGE_ARRAY = TimestampRangeEnum.values();
 
-    private static final long[] SPLIT_ARRAY = {
-            86400,//day:8
-            3600,//hour:5
-            60//minute:3
-    };
+    private static final TimestampSplit[] SPLIT_ARRAY = TimestampSplit.values();
 
     public static long getIsTimestampPoint(String timestampString) {
         try {
@@ -57,23 +52,10 @@ class TimestampPointUtil {
     }
 
     private static int checkTimeRangePoint(long timestampLong) {
-        int range = 0;
-        for (long time : TIMESTAMP_RANGE) {
-            if (timestampLong < time) {
-                switch (range) {
-                    case 0:
-                        return 0;
-                    case 1:
-                    case 5:
-                        return 1;
-                    case 2:
-                    case 4:
-                        return 3;
-                    case 3:
-                        return 5;
-                }
+        for (TimestampRangeEnum time : TIMESTAMP_RANGE_ARRAY) {
+            if (timestampLong < time.getTimestamp()) {
+                return time.getPoint();
             }
-            range++;
         }
         return 0;
     }
@@ -82,24 +64,65 @@ class TimestampPointUtil {
         if (timestampLong == 0) {
             return 0;
         }
-        for (long split : SPLIT_ARRAY) {
-            if (timestampLong % split == 0) {
-                switch ((int) split) {
-                    case 86400:
-                        return 8;
-                    case 3600:
-                        return 5;
-                    case 60:
-                        return 3;
-                }
+        for (TimestampSplit split : SPLIT_ARRAY) {
+            if (timestampLong % split.getSecond() == 0) {
+                return split.getPoint();
             }
         }
         return 0;
+    }
+
+}
+
+enum TimestampRangeEnum {
+    RANGE_MIN(631152000, 0),
+    RANGE_ONE(946684800, 1),
+    RANGE_TWO(1262304000, 3),
+    RANGE_THREE((System.currentTimeMillis() / 1000), 5),
+    RANGE_FOUR(getTimestampAfterYears(5), 3),
+    RANGE_MAX(getTimestampAfterYears(10), 1);
+
+    private long timestamp;
+    private int point;
+
+    TimestampRangeEnum(long timestamp, int point) {
+        this.point = point;
+        this.timestamp = timestamp;
+    }
+
+    public long getTimestamp() {
+        return this.timestamp;
+    }
+
+    public int getPoint() {
+        return this.point;
     }
 
     private static long getTimestampAfterYears(int year) {
         Calendar pastTenYear = Calendar.getInstance();
         pastTenYear.add(Calendar.YEAR, year);
         return pastTenYear.getTimeInMillis() / 1000;
+    }
+}
+
+enum TimestampSplit {
+    DAY(86400, 8),
+    HOUR(3600, 5),
+    MINUTE(60, 3);
+
+    private int second;
+    private int point;
+
+    TimestampSplit(int second, int point) {
+        this.second = second;
+        this.point = point;
+    }
+
+    public int getSecond() {
+        return this.second;
+    }
+
+    public int getPoint() {
+        return this.point;
     }
 }
