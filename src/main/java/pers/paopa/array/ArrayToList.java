@@ -3,8 +3,6 @@ package pers.paopa.array;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.lang.Integer.MIN_VALUE;
-
 public class ArrayToList {
     public static void main(String[] args) {
         List<List<String>> rowDataList = new ArrayList<>();
