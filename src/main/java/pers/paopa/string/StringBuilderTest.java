@@ -1,7 +1,5 @@
 package pers.paopa.string;
 
-import java.util.List;
-
 public class StringBuilderTest {
     public static void main(String[] args) {
         Table table = new Table();

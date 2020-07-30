@@ -18,7 +18,7 @@ import static org.apache.commons.lang3.StringUtils.isEmpty;
 
 public class CsvTest {
     public static void main(String[] args) throws IOException {
-        String filePath = "/Users/work/Documents/synergies/test_file/2020-05-08-1633_WG銷貨明細_gbk拷貝.csv";
+        String filePath = "/Users/workspace/Documents/synergies/test_file/art_daily_flatmiddle.csv";
         byte[] buff = new byte[4096];
         FileInputStream fileInputStream = new FileInputStream(filePath);
         UniversalDetector detector = new UniversalDetector(null);
@@ -34,8 +34,11 @@ public class CsvTest {
              CSVReader csvReader = new CSVReaderBuilder(reader)
                      .withFieldAsNull(CSVReaderNullFieldIndicator.EMPTY_SEPARATORS)
                      .build()) {
-            List<String> test = List.of(csvReader.readNext());
-            System.out.println(test);
+            while(csvReader.readNext() != null){
+                List<String> test = List.of(csvReader.readNext());
+                System.out.println(test);
+            }
+
         } catch (Exception e) {
             throw e;
         }
