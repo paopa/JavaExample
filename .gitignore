@@ -1,5 +1,9 @@
+# folder
 /.idea
 /target
 
+# file
+
+# file type
 *.iml
 .DS_Store

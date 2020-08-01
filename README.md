@@ -1,17 +1,8 @@
 # JavaExample
-Test something at here
-> @author : pao \
-> @log    : 2020.05.21
----
-command line backup
- 
-search at log
 
----
-download file from server
-```
-scp <host>:<file path> <local path>
-```
-ex:\
-scp david@sygps.dev.sis.ai:~/application.yml .
----
+## Project Description
+> Test something at here
+
+## Requirement
+ - JDK 12.0.2
+ - Maven 3.6.3
