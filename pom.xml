@@ -100,11 +100,20 @@
             <version>2.1.0</version>
         </dependency>
 
-        <!-- PostgreSql -->
+        <!-- postgreSQL -->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>42.2.15</version>
         </dependency>
+
+        <!-- lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.10</version>
+            <scope>provided</scope>
+        </dependency>
+
     </dependencies>
 </project>
