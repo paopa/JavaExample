@@ -4,7 +4,7 @@ import java.io.UnsupportedEncodingException;
 
 public class TextEncodingTest {
     public static void main(String[] args) throws UnsupportedEncodingException {
-        String str = "\\xE5\\xAD\\x97\\xE4\\xB8\\xB2\\xE6\\xA0\\xBC\\xE5\\xBC\\x8F\\xE4\\xB8\\x8D\\xE5\\x90\\x88\\xE6\\xB3\\x95";
+        String str = "\\xE3\\x80\\x82";
         System.out.println(decoding(str));
     }
 
