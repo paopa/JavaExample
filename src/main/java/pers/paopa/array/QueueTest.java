@@ -13,11 +13,28 @@ public class QueueTest {
 
     public static void main(String[] args) {
 //        addDemo();
-        offerDemo();
+//        offerDemo();
+//        mergeDemo();
+        deleteDemo();
     }
 
+    private static void deleteDemo() {
+        Queue<Long> queue1 = new LinkedList<>(generateExampleList(5));
+        System.out.println(queue1);
+        queue1.removeAll(List.of(1L, 2L));
+        System.out.println(queue1);
+    }
+
+    private static void mergeDemo() {
+        Queue<Long> queue1 = new LinkedList<>(generateExampleList(5));
+        Queue<Long> queue2 = new LinkedList<>(generateExampleList(5));
+        queue1.addAll(queue2);
+        System.out.print(queue1);
+    }
+
+
     private static void offerDemo() {
-        List<Long> list = generateExampleList(1000);
+        List<Long> list = generateExampleList(5);
         list.forEach(queue::offer);
         System.out.println(queue);
     }
