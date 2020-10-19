@@ -6,6 +6,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import java.util.Date;
 
 public class JWTTest {
+
     public static void main(String[] args) {
 
         String token = Jwts.builder()
@@ -20,10 +21,5 @@ public class JWTTest {
                 .parseClaimsJws(token)
                 .getBody().getSubject();
         System.out.println(xxx);
-
-
-
     }
-
-
 }
