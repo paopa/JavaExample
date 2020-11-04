@@ -52,8 +52,17 @@ class Test {
 //        test3();
 //        test4();
 //        test5();
-        test6();
+//        test6();
+        test7();
 //        classLoaderTest();
+    }
+
+    /**
+     * test instance two class
+     */
+    private static void test7() {
+        System.out.println(new Sub());
+        System.out.println(new Sub());
     }
 
     /**
