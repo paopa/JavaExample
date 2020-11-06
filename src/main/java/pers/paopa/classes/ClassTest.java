@@ -1,6 +1,6 @@
 package pers.paopa.classes;
 
-import pers.paopa.date.ConvertYearToACTest;
+import pers.paopa.date.com.ConvertYearToACTest;
 
 public class ClassTest {
     public static void main(String[] args) {
