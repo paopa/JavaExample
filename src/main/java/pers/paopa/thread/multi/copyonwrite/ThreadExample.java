@@ -1,12 +1,12 @@
-package pers.paopa.thread.multi.semaphore;
+package pers.paopa.thread.multi.copyonwrite;
 
 import java.util.List;
 
-public class ThreadExample2 implements Runnable {
+public class ThreadExample implements Runnable {
 
     private List<String> list;
 
-    public ThreadExample2(List<String> list) {
+    public ThreadExample(List<String> list) {
         this.list = list;
     }
 
