@@ -1,4 +1,4 @@
-package pers.paopa.basic.variable;
+package pers.paopa.basic.staticvariable;
 
 public class Super {
     static String s = "static super s";
@@ -109,7 +109,7 @@ class Test {
     }
 
     private static void classLoaderTest() throws ClassNotFoundException {
-        Class c = Class.forName("pers.paopa.basic.variable.Super");
+        Class c = Class.forName("pers.paopa.basic.staticvariable.Super");
         // 取得ClassLoader
         ClassLoader loader = c.getClassLoader();
         System.out.println(loader);
