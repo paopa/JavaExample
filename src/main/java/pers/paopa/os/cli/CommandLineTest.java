@@ -9,7 +9,7 @@ public class CommandLineTest {
 
     private void demo() {
         try {
-            String command = "";
+            String command = "echo 1";
             Process process = executeCommand(command);
             if (process != null) {
                 BufferedReader reader = openBufferedReader(process);
