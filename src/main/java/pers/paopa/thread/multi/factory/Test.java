@@ -1,7 +1,5 @@
 package pers.paopa.thread.multi.factory;
 
-import java.util.concurrent.ThreadFactory;
-
 public class Test {
     public static void main(String[] args) {
         demo();
