@@ -9,9 +9,9 @@ public class JdbcTest {
     private static String connectionUrl = "jdbc:postgresql://%s:%s/%s";
     private static String host = "localhost";
     private static String port = "5432";
-    private static String username = "workspace";
-    private static String password = "123qwe";
-    private static String database = "workspace";
+    private static String username = "";
+    private static String password = "";
+    private static String database = "";
 
 
     public static Connection generateConnection() throws ClassNotFoundException, SQLException {
