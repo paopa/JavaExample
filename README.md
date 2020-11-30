@@ -4,5 +4,5 @@
 > Test something at here
 
 ## Requirement
- - JDK 12.0.2
+ - JDK 15.0.1
  - Maven 3.6.3
