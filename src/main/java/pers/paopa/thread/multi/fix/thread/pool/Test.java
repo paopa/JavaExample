@@ -9,7 +9,6 @@ public class Test {
         try {
             for (int i = 0; i < 7; i++) {
                 service.execute(new ThreadExample());
-                Thread.sleep(1000);
             }
         } catch (Exception e) {
             throw new RuntimeException();
