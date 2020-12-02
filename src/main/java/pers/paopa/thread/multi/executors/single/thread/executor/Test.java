@@ -1,4 +1,4 @@
-package pers.paopa.thread.multi.executors.single.thread.excutor;
+package pers.paopa.thread.multi.executors.single.thread.executor;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
