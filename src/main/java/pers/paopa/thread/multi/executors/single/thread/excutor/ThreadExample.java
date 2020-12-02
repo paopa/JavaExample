@@ -1,4 +1,4 @@
-package pers.paopa.thread.multi.fix.thread.pool;
+package pers.paopa.thread.multi.executors.single.thread.excutor;
 
 import lombok.SneakyThrows;
 

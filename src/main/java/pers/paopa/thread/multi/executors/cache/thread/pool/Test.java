@@ -1,4 +1,4 @@
-package pers.paopa.thread.multi.cache.thread.pool;
+package pers.paopa.thread.multi.executors.cache.thread.pool;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
