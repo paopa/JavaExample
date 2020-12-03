@@ -2,9 +2,9 @@ package pers.paopa.os.cli;
 
 import java.io.*;
 
-public class CommandLineTest {
+public class RuntimeExecuteTest {
     public static void main(String[] args) {
-        new CommandLineTest().demo();
+        new RuntimeExecuteTest().demo();
     }
 
     private void demo() {
