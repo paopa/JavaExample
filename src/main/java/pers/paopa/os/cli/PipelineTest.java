@@ -5,7 +5,7 @@ import java.util.List;
 
 public class PipelineTest {
 
-    private final static String PATH = "";
+    private final static String PATH = "/Users/workspace/Documents/projects/java-example/src/main/java/pers/paopa/os/cli/";
     private final static List<String> LIST = List.of("d\n", "v\n", "g\n", "G\n");
 
     public static void main(String[] args) throws Exception {
@@ -31,11 +31,12 @@ class Output implements Runnable {
 
     @Override
     public void run() {
-        try (OutputStream out = outputStream) {
+        try (BufferedWriter out = new BufferedWriter(new OutputStreamWriter(outputStream))) {
             list.forEach(name -> {
                 try {
-                    out.write(name.getBytes());
+                    out.write(name);
                     out.flush();
+                    Thread.sleep(2000);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
