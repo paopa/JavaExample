@@ -5,8 +5,8 @@ import java.util.List;
 
 public class PipelineTest {
 
-    private final static String PATH = "/Users/workspace/Documents/projects/java-example/src/main/java/pers/paopa/os/cli/";
-    private final static List<String> LIST = List.of("d\n", "v\n", "g\n", "G\n");
+    private final static String PATH = "";
+    private final static List<String> LIST = List.of("d", "v", "g", "G", "x", "r", "r");
 
     public static void main(String[] args) throws Exception {
         ProcessBuilder pb = new ProcessBuilder("python3", "test.py");
@@ -35,8 +35,10 @@ class Output implements Runnable {
             list.forEach(name -> {
                 try {
                     out.write(name);
+                    out.newLine();
                     out.flush();
-                    Thread.sleep(2000);
+                    System.out.println("-----");
+                    Thread.sleep(1000);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -57,7 +59,10 @@ class Input implements Runnable {
     @Override
     public void run() {
         try (BufferedReader reader = generateReader(inputStream)) {
-            reader.lines().forEach(System.out::println);
+            String line;
+            while ((line = reader.readLine()) != null) {    //若檔案內容不為null就執行
+                System.out.println(line);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
