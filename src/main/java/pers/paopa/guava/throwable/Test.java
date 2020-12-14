@@ -2,6 +2,11 @@ package pers.paopa.guava.throwable;
 
 import com.google.common.base.Throwables;
 
+/**
+ * 目前來看網路上的介紹文章，在 java 7 支援 multi-catch 後
+ * guava 的 Throwables 就相較沒有其優勢，所以實際應用情境，
+ * 看來主要是針對 java 6 及其之前版本，用處較為大。
+ */
 public class Test {
     public static void main(String[] args) {
         demo();
