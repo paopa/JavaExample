@@ -4,6 +4,8 @@ public class PrivateStaticTest {
     public static void main(String[] args) {
         A a = new A();
         a.print(12);
+        A b = new A();
+        b.print2();
     }
 }
 
