@@ -1,4 +1,4 @@
-package pers.paopa.basic.extend;
+package pers.paopa.basic.extend.method;
 
 public class Test {
     public static void main(String[] args) {
