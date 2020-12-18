@@ -40,9 +40,7 @@ class B implements Runnable {
     public void run() {
         String value;
         while (true) {
-            while ((value = queue.take()) == null) {
-                System.out.println("temp");
-            }
+            value = queue.take();
             System.out.println("output: " + value);
         }
     }
