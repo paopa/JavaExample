@@ -3,7 +3,7 @@ package pers.paopa.os.cli;
 import java.io.*;
 import java.util.List;
 
-public class PipelineTest {
+public class PythonExecuteTest {
 
     private final static String PATH = "";
     private final static List<String> LIST = List.of("d", "v", "g", "G", "x", "r", "r");
