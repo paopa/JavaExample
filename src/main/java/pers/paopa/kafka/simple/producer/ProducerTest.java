@@ -13,12 +13,12 @@ public class ProducerTest {
         // 建立 配置物件
         Properties props = new Properties();
         // kafka cluster
-        props.setProperty("bootstrap.servers","localhost:9092");
+        props.setProperty("bootstrap.servers", "localhost:9092");
         // K V 序列化
-        props.setProperty("key.serializer","org.apache.kafka.common.serialization.StringSerializer");
-        props.setProperty("value.serializer","org.apache.kafka.common.serialization.StringSerializer");
+        props.setProperty("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
+        props.setProperty("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
         // ack 機制
-        props.setProperty("acks","1");
+        props.setProperty("acks", "1");
 
         // 建立 producer **note** Producer implements Closeable
         Producer<String, String> producer = new KafkaProducer<>(props);
