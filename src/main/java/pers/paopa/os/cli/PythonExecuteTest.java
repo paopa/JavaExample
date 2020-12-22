@@ -2,14 +2,15 @@ package pers.paopa.os.cli;
 
 import java.io.*;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class PythonExecuteTest {
 
     private final static String PATH = "";
-    private final static List<String> LIST = List.of("d", "v", "g", "G", "x", "r", "r");
+    private final static List<String> LIST = List.of("d");
 
     public static void main(String[] args) throws Exception {
-        ProcessBuilder pb = new ProcessBuilder("python3", "test.py");
+        ProcessBuilder pb = new ProcessBuilder("python3", "-u", "test.py");
         pb.directory(new File(PATH));
         Process process = pb.start();
         new Thread(new Output(process.getOutputStream(), LIST)).start();
@@ -31,21 +32,28 @@ class Output implements Runnable {
 
     @Override
     public void run() {
-        try (BufferedWriter out = new BufferedWriter(new OutputStreamWriter(outputStream))) {
-            list.forEach(name -> {
-                try {
-                    out.write(name);
-                    out.newLine();
-                    out.flush();
-                    System.out.println("-----");
-                    Thread.sleep(1000);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            });
+        try (BufferedWriter out = generateOutputStream(outputStream)) {
+            AtomicInteger i = new AtomicInteger();
+            while (i.getAndIncrement() < 100000) {
+                list.forEach(name -> {
+                    try {
+                        System.out.println("-----" + i.get());
+                        out.write(name);
+                        out.newLine();
+                        out.flush();
+                        System.out.println(name.getBytes().length);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                });
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private BufferedWriter generateOutputStream(OutputStream outputStream) {
+        return new BufferedWriter(new OutputStreamWriter(outputStream));
     }
 }
 
@@ -60,10 +68,11 @@ class Input implements Runnable {
     public void run() {
         try (BufferedReader reader = generateReader(inputStream)) {
             String line;
-            while ((line = reader.readLine()) != null) {    //若檔案內容不為null就執行
+            Thread.sleep(100);
+            while ((line = reader.readLine()) != null) {
                 System.out.println(line);
             }
-        } catch (IOException e) {
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
     }
