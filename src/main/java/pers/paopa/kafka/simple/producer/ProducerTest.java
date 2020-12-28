@@ -1,4 +1,4 @@
-package pers.paopa.kafka.simple.producer.simple;
+package pers.paopa.kafka.simple.producer;
 
 import org.apache.kafka.clients.producer.*;
 import pers.paopa.kafka.simple.setting.KafkaConfiguration;

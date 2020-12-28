@@ -15,7 +15,7 @@ public class KafkaConfiguration {
         // ack 機制
         props.setProperty("acks", "1");
         // custom partitioner class
-        props.setProperty("partitioner.class", "pers.paopa.kafka.simple.producer.simple.PartitionerTest");
+//        props.setProperty("partitioner.class", "pers.paopa.kafka.simple.producer.simple.PartitionerTest");
     }
 
 }

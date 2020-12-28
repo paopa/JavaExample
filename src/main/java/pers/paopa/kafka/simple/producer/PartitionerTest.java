@@ -1,4 +1,4 @@
-package pers.paopa.kafka.simple.producer.simple;
+package pers.paopa.kafka.simple.producer;
 
 import org.apache.kafka.clients.producer.Partitioner;
 import org.apache.kafka.common.Cluster;
