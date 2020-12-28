@@ -11,19 +11,7 @@ public class ConsumerTest {
     public static void main(String[] args) {
 
         // create properties object
-        Properties props = new Properties();
-        // kafka cluster
-        props.setProperty("bootstrap.servers", "localhost:55029");
-        // K V 反序列化
-        props.setProperty("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
-        props.setProperty("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
-        // set consumer group id
-        props.setProperty("group.id", "test-group");
-        // auto commit offset ** default is true
-        props.setProperty("enable.auto.commit", "true");
-        // auto commit offset interval ** default is 5000
-        props.setProperty("auto.commit.interval.ms", "1000");
-
+        Properties props = KafkaConsumerConfiguration.props;
         // create consumer object
         KafkaConsumer<String, String> consumer = new KafkaConsumer<>(props);
 
@@ -37,5 +25,25 @@ public class ConsumerTest {
             // print
             records.forEach(System.out::println);
         }
+    }
+
+    static class KafkaConsumerConfiguration {
+
+        private static final Properties props = new Properties();
+
+        static {
+            // kafka cluster
+            props.setProperty("bootstrap.servers", "localhost:55029");
+            // K V 反序列化
+            props.setProperty("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
+            props.setProperty("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
+            // set consumer group id
+            props.setProperty("group.id", "test-group");
+            // auto commit offset ** default is true
+            props.setProperty("enable.auto.commit", "true");
+            // auto commit offset interval ** default is 5000
+            props.setProperty("auto.commit.interval.ms", "1000");
+        }
+
     }
 }

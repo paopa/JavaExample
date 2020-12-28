@@ -1,7 +1,6 @@
 package pers.paopa.kafka.simple.producer;
 
 import org.apache.kafka.clients.producer.*;
-import pers.paopa.kafka.simple.setting.KafkaConfiguration;
 
 import java.util.Properties;
 
@@ -10,7 +9,7 @@ public class ProducerTest {
 
     public static void main(String[] args) throws Exception {
         // 建立 配置物件
-        Properties props = KafkaConfiguration.props;
+        Properties props = KafkaProducerConfiguration.props;
         // 建立 producer **note** Producer implements Closeable
         Producer<String, String> producer = new KafkaProducer<>(props);
         // 準備 數據
@@ -39,4 +38,20 @@ public class ProducerTest {
         producer.close();
     }
 
+    static class KafkaProducerConfiguration {
+
+        private static final Properties props = new Properties();
+
+        static {
+            // kafka cluster
+            props.setProperty("bootstrap.servers", "localhost:55029");
+            // K V 序列化
+            props.setProperty("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
+            props.setProperty("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
+            // ack 機制
+            props.setProperty("acks", "1");
+            // custom partitioner class
+//            props.setProperty("partitioner.class", "pers.paopa.kafka.simple.producer.simple.PartitionerTest");
+        }
+    }
 }
