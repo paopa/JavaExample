@@ -9,12 +9,10 @@ import java.util.Properties;
 
 public class ConsumerTest {
     public static void main(String[] args) {
-
         // create properties object
         Properties props = KafkaConsumerConfiguration.props;
         // create consumer object
         KafkaConsumer<String, String> consumer = new KafkaConsumer<>(props);
-
         // subscribe topics
         consumer.subscribe(Arrays.asList("test"));
 //        consumer.assign(Arrays.asList(new TopicPartition("test",1)));
