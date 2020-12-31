@@ -1,4 +1,4 @@
-package pers.paopa.guava.cache;
+package pers.paopa.guava.cache.simple;
 
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;

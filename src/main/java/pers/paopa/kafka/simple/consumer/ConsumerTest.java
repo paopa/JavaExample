@@ -12,6 +12,7 @@ public class ConsumerTest {
         // create properties object
         Properties props = KafkaConsumerConfiguration.props;
         // create consumer object
+
         KafkaConsumer<String, String> consumer = new KafkaConsumer<>(props);
         // subscribe topics
         consumer.subscribe(Arrays.asList("test"));
