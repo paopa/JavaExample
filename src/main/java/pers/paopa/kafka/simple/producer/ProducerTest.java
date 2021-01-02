@@ -2,6 +2,7 @@ package pers.paopa.kafka.simple.producer;
 
 import org.apache.kafka.clients.producer.*;
 
+import java.util.List;
 import java.util.Properties;
 
 public class ProducerTest {
@@ -23,6 +24,21 @@ public class ProducerTest {
         // async
 //        producer.send(record);
         // async with callback
+//        callbackSend(producer, record);
+        // async with interceptor
+        interceptorSend(producer, record);
+
+        // 關閉 producer
+        producer.close();
+    }
+
+    private static void interceptorSend(Producer<String, String> producer, ProducerRecord record) {
+        for (int i = 0; i < 5; i++) {
+            callbackSend(producer, record);
+        }
+    }
+
+    private static void callbackSend(Producer<String, String> producer, ProducerRecord record) {
         producer.send(record, new Callback() {
             // callback method
             @Override
@@ -33,9 +49,6 @@ public class ProducerTest {
                 System.out.println(metadata.offset());
             }
         });
-
-        // 關閉 producer
-        producer.close();
     }
 
     static class KafkaProducerConfiguration {
@@ -44,7 +57,7 @@ public class ProducerTest {
 
         static {
             // kafka cluster
-            props.setProperty("bootstrap.servers", "localhost:55029");
+            props.setProperty("bootstrap.servers", "localhost:55001");
             // K V 序列化
             props.setProperty("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
             props.setProperty("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
@@ -52,6 +65,11 @@ public class ProducerTest {
             props.setProperty("acks", "1");
             // custom partitioner class
 //            props.setProperty("partitioner.class", "pers.paopa.kafka.simple.producer.simple.PartitionerTest");
+            // interceptor
+            props.put(ProducerConfig.INTERCEPTOR_CLASSES_CONFIG, List.of(
+                    "pers.paopa.kafka.simple.producer.TimeInterceptor",
+                    "pers.paopa.kafka.simple.producer.CounterInterceptor"
+            ));
         }
     }
 }
