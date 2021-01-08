@@ -31,52 +31,12 @@ public class IOBlockedTest {
             IOStream stream = IOStream.builder()
                     .out(new BufferedWriter(new OutputStreamWriter(process.getOutputStream())))
                     .in(new BufferedReader(new InputStreamReader(process.getInputStream())))
-//                    .error(new BufferedReader(new InputStreamReader(process.getErrorStream())))
                     .build();
             while (true) {
                 send(stream.out);
                 read(stream.in);
-//                Thread.sleep(1000);
-//                error(stream.error);
+                Thread.sleep(3000);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private static void error(BufferedReader error) {
-        try {
-            String line;
-            while ((line = error.readLine()) != null) {
-                System.out.println(line);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private static void read(BufferedReader in) {
-        try {
-            String line = null;
-//            label:
-//            {
-//                while (true) {
-//                    while (in.ready()) {
-//                        line = in.readLine();
-//                        if (line != null && line.startsWith("Y")) {
-//                            System.out.println(line);
-//                            break label;
-//                        }
-//                    }
-//                }
-//            }
-            while (in.ready()) {
-                while ((line = in.readLine()) == null || !line.startsWith("Y")) {
-
-                }
-                break;
-            }
-            System.out.println(line);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -89,6 +49,42 @@ public class IOBlockedTest {
             out.newLine();
             out.flush();
         } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void read(BufferedReader in) {
+        try {
+            String line = null;
+            while (!in.ready()) {
+                System.out.println("is readr ready ?" + in.ready());
+            }
+            while (in.ready()) {
+                System.out.println("is readr ready ?" + in.ready());
+                line = in.readLine();
+                if (line == null) {
+                    System.out.println("is null");
+                    continue;
+                }
+                if (!line.startsWith("Y")) {
+                    System.out.println("is not match prefix " + line);
+                    continue;
+                }
+                System.out.println("is match prefix " + line);
+            }
+            System.out.println("is readr ready ?" + in.ready());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void error(BufferedReader error) {
+        try {
+            String line;
+            while ((line = error.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

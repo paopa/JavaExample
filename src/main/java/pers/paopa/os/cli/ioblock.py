@@ -5,7 +5,7 @@ import time
 def main():
 #     print(f'Input : {line}')
     for line in sys.stdin:
-        print(f'Y: {line}\n')
         sys.stderr.write('asdfasf\n')
+        print(f'Y: {line}')
 
 main()
