@@ -1,4 +1,4 @@
-package pers.paopa.junit.mockito;
+package pers.paopa.mockito;
 
 import static org.mockito.Mockito.mock;
 

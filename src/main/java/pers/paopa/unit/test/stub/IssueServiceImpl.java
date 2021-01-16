@@ -1,4 +1,4 @@
-package pers.paopa.junit.stub;
+package pers.paopa.unit.test.stub;
 
 import lombok.AllArgsConstructor;
 

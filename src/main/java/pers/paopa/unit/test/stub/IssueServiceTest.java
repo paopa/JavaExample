@@ -1,4 +1,4 @@
-package pers.paopa.junit.stub;
+package pers.paopa.unit.test.stub;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

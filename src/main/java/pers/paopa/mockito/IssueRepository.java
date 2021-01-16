@@ -1,4 +1,4 @@
-package pers.paopa.junit.mockito;
+package pers.paopa.mockito;
 
 /**
  * STU 的相依介面 DOC (Depended-on Component)

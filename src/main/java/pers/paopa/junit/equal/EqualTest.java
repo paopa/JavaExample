@@ -1,4 +1,4 @@
-package pers.paopa.junit.simple.equal;
+package pers.paopa.junit.equal;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
