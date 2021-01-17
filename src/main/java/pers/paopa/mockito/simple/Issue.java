@@ -1,4 +1,4 @@
-package pers.paopa.mockito;
+package pers.paopa.mockito.simple;
 
 import lombok.Data;
 
