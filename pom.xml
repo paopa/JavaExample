@@ -147,6 +147,13 @@
             <version>3.3.3</version>
         </dependency>
 
+        <!-- Mockito for lambda       -->
+        <dependency>
+            <groupId>info.solidsoft.mockito</groupId>
+            <artifactId>mockito-java8</artifactId>
+            <version>2.2.0</version>
+        </dependency>
+
         <!-- Kafka-client -->
         <dependency>
             <groupId>org.apache.kafka</groupId>
