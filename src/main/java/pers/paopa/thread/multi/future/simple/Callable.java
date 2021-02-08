@@ -1,4 +1,4 @@
-package pers.paopa.thread.multi.future;
+package pers.paopa.thread.multi.future.simple;
 
 public class Callable implements java.util.concurrent.Callable<String> {
 

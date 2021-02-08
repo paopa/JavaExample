@@ -1,4 +1,4 @@
-package pers.paopa.thread.multi.future;
+package pers.paopa.thread.multi.future.simple;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
