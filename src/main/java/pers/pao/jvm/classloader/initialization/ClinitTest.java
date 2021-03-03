@@ -9,7 +9,7 @@ package pers.pao.jvm.classloader.initialization;
  * 1.pass value to static variable
  * 2.static{ ... }
  */
-public class Test {
+public class ClinitTest {
     private static int a = 1;
 
     static {
@@ -24,7 +24,7 @@ public class Test {
     private static int b = 10;
 
     public static void main(String[] args) {
-        System.out.println(Test.a);
-        System.out.println(Test.b);
+        System.out.println(ClinitTest.a);
+        System.out.println(ClinitTest.b);
     }
 }
