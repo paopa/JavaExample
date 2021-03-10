@@ -1,6 +1,6 @@
 # folder
 /.idea
-/target
+*/target
 /out
 other/src/main/java/META-INF/
 
