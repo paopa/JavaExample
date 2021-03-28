@@ -1,4 +1,4 @@
-# Java Example
+# Java Practice
 
 ## Project Description
 > Test something at here
@@ -9,4 +9,4 @@
 
 ## Java Tools
 `javadoc` generate document 
-    - 使用說明可以參考 package: pers.paopa.comment
+    - 使用說明可以參考 `package: pers.paopa.comment`
