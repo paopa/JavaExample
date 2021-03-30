@@ -1,4 +1,4 @@
-package pers.pao.list.simple;
+package pers.pao.collections.list.simple;
 
 import java.util.List;
 

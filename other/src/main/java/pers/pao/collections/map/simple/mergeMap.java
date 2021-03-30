@@ -1,4 +1,4 @@
-package pers.pao.map.simple;
+package pers.pao.collections.map.simple;
 
 import java.util.ArrayList;
 import java.util.List;
