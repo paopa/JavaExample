@@ -19,6 +19,13 @@ public class Test {
         System.out.println(text2);
     }
 
+    private static void testStatic(){
+        String a = "asdf";
+        Date date = new Date();
+        int i = 10;
+        System.out.println(i);
+    }
+
     private String test2(Date date, String text) {
         date = null;
         text = "zxcv";
