@@ -5,8 +5,9 @@ import java.util.Date;
 /**
  * 非 static method 會在 local variables index 0 放入 "this" variable
  * 也可以從這裡解釋為什麼 static method 不能調用 this
- *
+ * <p>
  * slot 是可以被重複利用的，當前一個使用該 index 的 variable 被銷毀後
+ *
  * @see pers.pao.jvm.stack.frame.local.variables.Test#test4()
  */
 public class Test {
@@ -58,4 +59,20 @@ public class Test {
         }
         int c = 1;
     }
+
+    /**
+     * static , non-static field and method local variable
+     * be initialized and be passed default value
+     */
+    private static int a; // class loader -> linking-prepare stage
+    private int b; // initialize 在 new a instance
+    private final int c = 3;
+
+    public void initializeTest() {
+        int i;
+//        System.out.println(i); //沒進行 initialize
+        System.out.println(a);
+        System.out.println(b);
+    }
+
 }
