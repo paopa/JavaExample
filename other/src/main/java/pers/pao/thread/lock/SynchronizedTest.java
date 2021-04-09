@@ -1,14 +1,16 @@
 package pers.pao.thread.lock;
 
 import lombok.SneakyThrows;
+import lombok.Synchronized;
 
 import java.util.concurrent.locks.ReentrantLock;
 
 public class SynchronizedTest {
     public static void main(String[] args) {
 //        test(new A());
-        test(new B());
+//        test(new B());
 //        test(new C());
+        test(new D());
     }
 
     private static void test(Runnable runnable) {
@@ -85,5 +87,33 @@ class C implements Runnable {
                 lock.unlock();
             }
         }
+    }
+}
+
+class D implements Runnable {
+    private int count = 100;
+
+    @Override
+    public void run() {
+        while (true) {
+            if (check()) {
+                print();
+            } else {
+                break;
+            }
+        }
+    }
+
+    @Synchronized
+    public boolean check() {
+        return count > 0;
+    }
+
+    @SneakyThrows
+    @Synchronized
+    public void print() {
+        Thread.sleep(100);
+        System.out.println(Thread.currentThread().getName() + " a:" + count);
+        count--;
     }
 }
