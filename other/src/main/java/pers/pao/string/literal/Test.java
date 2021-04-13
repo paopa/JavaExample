@@ -24,6 +24,10 @@ public class Test {
         System.out.println(b.equals(c));
         System.out.println(c.equals(d));
 
+        String[] strings = new String[]{"1", "2"};
+        System.out.println(strings[0] == "1");
+        System.out.println(strings[0] == new String("1"));
+
     }
 
 }

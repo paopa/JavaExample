@@ -9,5 +9,9 @@ public class Test {
         long[] longs = {i, j};
         System.out.println(longs[0] == i);
         System.out.println(longs[1] == j);
+
+        Long[] longs1 = new Long[]{1L, 2L};
+        System.out.println(longs1[0] == 1L);
+        System.out.println(longs1[0] == new Long(1));
     }
 }
