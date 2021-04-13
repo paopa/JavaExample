@@ -1,6 +1,6 @@
-package pers.pao.literal;
+package pers.pao.longs.literal;
 
-public class LongLiteral {
+public class Test {
     public static void main(String[] args) {
         long i = 10;
         Long j = i;
