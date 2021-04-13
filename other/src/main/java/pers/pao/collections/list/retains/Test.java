@@ -1,4 +1,4 @@
-package pers.pao.collections.retains;
+package pers.pao.collections.list.retains;
 
 import java.util.ArrayList;
 import java.util.List;
