@@ -1,4 +1,4 @@
-package pers.pao.string.pool;
+package pers.pao.string.literal;
 
 /**
  * String literal vs String object
