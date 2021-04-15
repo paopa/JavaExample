@@ -9,9 +9,10 @@ import java.util.stream.Collectors;
 
 public class Test {
     public static void main(String[] args) {
-        Map<Integer, A> collect = List.of(new A(1, 2), new A(1, 3), new A(1, 4))
+        Map collect = List.of(new A(1, 2), new A(1, 3), new A(1, 4))
                 .stream()
-                .collect(Collectors.toMap(A::getA1, Function.identity(), (a1, a2) -> (a2)));
+//                .collect(Collectors.toMap(A::getA1, Function.identity(), (a1, a2) -> (a2)));
+                .collect(Collectors.toMap(Function.identity(), A::getA1));
         System.out.println(collect);
     }
 }
