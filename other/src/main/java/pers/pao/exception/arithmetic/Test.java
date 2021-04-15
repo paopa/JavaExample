@@ -1,4 +1,4 @@
-package pers.pao;
+package pers.pao.exception.arithmetic;
 
 public class Test {
     public static void main(String[] args) {
