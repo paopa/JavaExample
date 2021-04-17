@@ -1,4 +1,4 @@
-package pers.pao.thread.multi.countdown;
+package pers.pao.thread.multi.countdown.simple;
 
 import java.util.concurrent.CountDownLatch;
 
