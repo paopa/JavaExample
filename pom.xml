@@ -23,6 +23,7 @@
     <modules>
         <module>jvm-test</module>
         <module>other</module>
+        <module>validator</module>
     </modules>
 
     <dependencies>
