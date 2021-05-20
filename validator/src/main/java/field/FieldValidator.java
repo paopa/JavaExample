@@ -9,6 +9,7 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
+import java.util.List;
 
 /**
  * in the ValidatorFactory will instantiate this class ,
@@ -24,7 +25,7 @@ public class FieldValidator implements ConstraintValidator<FieldConstraint, B> {
 }
 
 @Constraint(validatedBy = FieldValidator.class)
-@Target(value = {ElementType.FIELD})
+@Target(value = {ElementType.FIELD, ElementType.TYPE_USE})
 @Retention(value = RetentionPolicy.RUNTIME)
 @interface FieldConstraint {
     String message() default "custom validator message";
@@ -36,8 +37,9 @@ public class FieldValidator implements ConstraintValidator<FieldConstraint, B> {
 
 @RequiredArgsConstructor
 class A {
-    @FieldConstraint
-    private final B x;
+
+    private final List<@FieldConstraint B> x;
+    private @FieldConstraint B y;
 }
 
 @ToString
@@ -50,7 +52,7 @@ class B {
 class Test {
     public static void main(String[] args) {
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-        factory.getValidator().validate(new A(new B("aaaa")))
+        factory.getValidator().validate(new A(List.of(new B("aaaa"), new B("bbb"))))
                 .forEach(s -> System.out.println(s.getMessage()));
         System.out.println("thread end");
 
