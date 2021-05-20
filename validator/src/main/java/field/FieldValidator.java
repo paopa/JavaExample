@@ -14,7 +14,7 @@ import java.lang.annotation.Target;
  * in the ValidatorFactory will instantiate this class ,
  * so must be a public class
  */
-public class CustomValidator implements ConstraintValidator<CustomConstraint, B> {
+public class FieldValidator implements ConstraintValidator<FieldConstraint, B> {
 
     @Override
     public boolean isValid(B value, ConstraintValidatorContext context) {
@@ -23,10 +23,10 @@ public class CustomValidator implements ConstraintValidator<CustomConstraint, B>
     }
 }
 
-@Constraint(validatedBy = CustomValidator.class)
+@Constraint(validatedBy = FieldValidator.class)
 @Target(value = {ElementType.FIELD})
 @Retention(value = RetentionPolicy.RUNTIME)
-@interface CustomConstraint {
+@interface FieldConstraint {
     String message() default "custom validator message";
 
     Class<?>[] groups() default {};
@@ -36,7 +36,7 @@ public class CustomValidator implements ConstraintValidator<CustomConstraint, B>
 
 @RequiredArgsConstructor
 class A {
-    @CustomConstraint
+    @FieldConstraint
     private final B x;
 }
 
