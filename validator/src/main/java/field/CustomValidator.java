@@ -10,6 +10,10 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+/**
+ * in the ValidatorFactory will instantiate this class ,
+ * so must be a public class
+ */
 public class CustomValidator implements ConstraintValidator<CustomConstraint, B> {
 
     @Override
@@ -42,7 +46,6 @@ class A {
 class B {
     private final String name;
 }
-
 
 class Test {
     public static void main(String[] args) {
