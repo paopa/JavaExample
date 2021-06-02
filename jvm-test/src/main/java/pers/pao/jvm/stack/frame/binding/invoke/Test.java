@@ -4,6 +4,10 @@ public class Test {
     public static void main(String[] args) {
         Son son = new Son();
         son.show();
+
+        // declare a super class variable
+        Father f = son;
+        f.showCommon();
     }
 }
 
@@ -55,7 +59,7 @@ class Son extends Father {
         showPrivate();// invokevirtual , before java 11 using invokespeical
         this.showFinal();// invokevirtual
         this.showCommon();// invokevirtual
-        IMethod iMethod = () -> System.out.println(" method"); // invokedynamic
+        IMethod iMethod = () -> System.out.println("interface method"); // invokedynamic
         iMethod.method();// invokeinterface
     }
 }
