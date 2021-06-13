@@ -1,4 +1,4 @@
-package pers.pao.base.switchexpressions;
+package pers.pao.base.switch_.expression;
 
 public class Test {
     public static void main(String[] args) {
