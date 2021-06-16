@@ -9,3 +9,6 @@ other/src/main/java/META-INF/
 # file type
 *.iml
 .DS_Store
+
+### gradle ###
+**/.gradle
