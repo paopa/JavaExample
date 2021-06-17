@@ -12,3 +12,4 @@ other/src/main/java/META-INF/
 
 ### gradle ###
 **/.gradle
+**/build
