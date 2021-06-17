@@ -1,4 +1,4 @@
-package pre.pao.example.provide;
+package pre.pao.example.field.provide;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Guice;

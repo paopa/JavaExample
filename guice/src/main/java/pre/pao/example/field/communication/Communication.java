@@ -1,4 +1,4 @@
-package pre.pao.example.communication;
+package pre.pao.example.field.communication;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Guice;

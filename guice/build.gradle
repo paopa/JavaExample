@@ -24,5 +24,5 @@ test {
 }
 
 application {
-    mainClassName = "pre.pao.example.communication.Communication"
+    mainClassName = "pre.pao.example.field.communication.Communication"
 }
