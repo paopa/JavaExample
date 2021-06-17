@@ -5,6 +5,8 @@ import com.google.inject.Guice;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
 import com.google.inject.Scopes;
+import com.google.inject.name.Named;
+import com.google.inject.name.Names;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
@@ -26,9 +28,9 @@ final class Module
     protected void configure()
     {
         bind(Communicator.class)
+//                .annotatedWith(Names.named("c1"))
                 .to(Communicator.Default.class)
                 .in(Scopes.SINGLETON);
-        bind(Communication.class);
     }
 }
 
