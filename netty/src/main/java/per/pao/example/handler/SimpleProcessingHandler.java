@@ -1,6 +1,8 @@
 package per.pao.example.handler;
 
 import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import lombok.extern.slf4j.Slf4j;
@@ -39,6 +41,9 @@ public class SimpleProcessingHandler
         m.release();
         if (tmp.readableBytes() >= 4) {
             Model.Request request = new Model.Request(tmp.readInt());
+            Model.Response response = new Model.Response(request.getIntValue() * 2);
+            ChannelFuture future = ctx.writeAndFlush(response);
+            future.addListener(ChannelFutureListener.CLOSE);
         }
     }
 }
