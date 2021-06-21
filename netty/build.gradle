@@ -1,0 +1,25 @@
+plugins {
+  id 'java'
+//    id "application"
+}
+
+group 'per.pao.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+  testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+  compileOnly 'org.projectlombok:lombok:1.18.20'
+  annotationProcessor 'org.projectlombok:lombok:1.18.20'
+//    implementation 'com.google.inject:guice:5.0.1'
+  implementation 'ch.qos.logback:logback-classic:1.2.3'
+  implementation group: 'io.netty', name: 'netty-all', version: '4.1.65.Final'
+}
+
+test {
+  useJUnitPlatform()
+}
