@@ -1,6 +1,5 @@
 package per.pao.example.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 public class Model
@@ -12,7 +11,7 @@ public class Model
         private String stringValue;
     }
 
-    @AllArgsConstructor
+    @Data
     public static class Response
     {
         private final int intValue;

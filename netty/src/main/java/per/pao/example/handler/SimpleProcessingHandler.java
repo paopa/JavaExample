@@ -35,7 +35,6 @@ public class SimpleProcessingHandler
     public void channelRead(ChannelHandlerContext ctx, Object msg)
             throws Exception
     {
-        // to-do request processing
         ByteBuf m = (ByteBuf) msg;
         tmp.writeBytes(m);
         m.release();
