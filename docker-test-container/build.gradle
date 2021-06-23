@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+}
+
+group 'per.pao.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testCompile 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    compileOnly 'org.projectlombok:lombok:1.18.20'
+    annotationProcessor 'org.projectlombok:lombok:1.18.20'
+    implementation 'ch.qos.logback:logback-classic:1.2.3'
+    implementation 'org.testcontainers:testcontainers:1.15.3'
+    implementation 'org.testcontainers:postgresql:1.15.3'
+    implementation 'org.testcontainers:selenium:1.15.3'
+    testImplementation 'org.testcontainers:junit-jupiter:1.15.3'
+}
+
+test {
+    useJUnitPlatform()
+}
