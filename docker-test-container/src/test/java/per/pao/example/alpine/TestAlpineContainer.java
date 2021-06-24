@@ -16,7 +16,7 @@ import static java.util.Objects.isNull;
 
 @Testable
 @Testcontainers
-public class Test
+public class TestAlpineContainer
 {
     @Container
     public static final GenericContainer container =
