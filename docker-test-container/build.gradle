@@ -25,6 +25,8 @@ dependencies {
     testImplementation 'org.testcontainers:junit-jupiter:1.15.3'
     // jdbc
     runtimeOnly group: 'org.postgresql', name: 'postgresql', version: '42.2.22'
+    // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-chrome-driver
+    testImplementation group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version: '3.141.59'
 }
 
 test {
