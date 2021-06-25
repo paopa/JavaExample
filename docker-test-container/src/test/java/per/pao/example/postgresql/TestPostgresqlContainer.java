@@ -23,7 +23,7 @@ public class TestPostgresqlContainer
                     .withDatabaseName("test-db")
                     .withUsername("worker-1")
                     .withPassword("123")
-                    .withInitScript("table/table.sql");
+                    .withInitScript("db-script/table.sql");
 
     @Test
     @DisplayName("test select one")
