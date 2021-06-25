@@ -2,17 +2,14 @@ package per.pao.example.alpine;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.platform.commons.annotation.Testable;
 import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
+import per.pao.example.tools.WebTool;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-
-import static java.util.Objects.isNull;
+import static per.pao.example.tools.WebTool.request;
 
 @Testable
 @Testcontainers
@@ -27,31 +24,16 @@ public class TestAlpineContainer
                             "-c",
                             "while true; do echo \"HTTP/1.1 200 OK\n\nHello World!!\" | nc -l -p 80; done;");
 
-    @org.junit.jupiter.api.Test
+    @Test
     @DisplayName("alpine container test")
     public void test()
             throws Exception
     {
         String expected = "Hello World!!";
-        String actual = getRequest(String.format("http://%s:%s",
+        String address = String.format("http://%s:%s",
                 container.getContainerIpAddress(),
-                container.getMappedPort(80)));
+                container.getMappedPort(80));
+        String actual = request(WebTool.HttpMethod.GET, address);
         Assertions.assertEquals(expected, actual);
-    }
-
-    private String getRequest(String host)
-            throws Exception
-    {
-        URL url = new URL(host);
-        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-        connection.setRequestMethod("GET");
-        StringBuilder builder = new StringBuilder();
-        try (BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
-            String line;
-            while (!isNull(line = in.readLine())) {
-                builder.append(line);
-            }
-        }
-        return builder.toString();
     }
 }
