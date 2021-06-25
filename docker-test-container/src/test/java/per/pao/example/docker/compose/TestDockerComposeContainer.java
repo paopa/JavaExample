@@ -20,9 +20,12 @@ public class TestDockerComposeContainer
 
     @BeforeAll
     public static void setup()
+            throws Exception
     {
         container = new DockerComposeContainer(
-                Paths.get("src/test/resources/docker/docker-compose.yml").toFile())
+                Paths.get(TestDockerComposeContainer.class
+                        .getClassLoader()
+                        .getResource("docker/docker-compose.yml").toURI()).toFile())
                 .withExposedService("web_1", 80);
         container.start();
     }
