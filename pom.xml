@@ -24,6 +24,7 @@
         <module>jvm-test</module>
         <module>other</module>
         <module>validator</module>
+        <module>unit-test</module>
     </modules>
 
     <dependencies>
