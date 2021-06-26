@@ -19,4 +19,14 @@ public class MapperIntegrationTest
         Assertions.assertEquals(source.getName(), destination.getName());
         Assertions.assertEquals(source.getDescription(), destination.getDescription());
     }
+
+    @Test
+    @DisplayName("test destination to source")
+    public void testDestinationToSource()
+    {
+        Destination destination = new Destination("destination name", "destination description");
+        Source source = mapper.destinationToSource(destination);
+        Assertions.assertEquals(destination.getName(), source.getName());
+        Assertions.assertEquals(destination.getDescription(), source.getDescription());
+    }
 }
