@@ -25,6 +25,7 @@
         <module>other</module>
         <module>validator</module>
         <module>unit-test</module>
+        <module>kafka</module>
     </modules>
 
     <dependencies>
