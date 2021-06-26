@@ -14,8 +14,10 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
     implementation 'org.mapstruct:mapstruct:1.4.2.Final'
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
+    implementation 'com.google.inject:guice:5.0.1'
 }
 
 test {
     useJUnitPlatform()
+    testLogging.events("passed", "skipped", "failed")
 }
