@@ -26,6 +26,7 @@
         <module>validator</module>
         <module>unit-test</module>
         <module>kafka</module>
+        <module>zookeeper</module>
     </modules>
 
     <dependencies>
