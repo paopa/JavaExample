@@ -15,5 +15,6 @@ class UserBodyMapperTest
         Values values = UserBodyMapper.INSTANCE.toValues(dto);
         assertNotNull(values);
         assertEquals(dto.getInch() * 2.54, values.getCentimeter());
+        assertEquals(dto.getPound() * 0.435, values.getKilogram());
     }
 }
