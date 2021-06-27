@@ -14,13 +14,13 @@ public interface EmployeeMapper
             @Mapping(target = "employeeId", source = "entity.id"),
             @Mapping(target = "employeeName", source = "entity.name")
     })
-    EmployeeDto entityToDto(Employee entity);
+    Employee.Dto entityToDto(Employee.Entity entity);
 
     @Mappings({
             @Mapping(target = "id", source = "dto.employeeId"),
             @Mapping(target = "name", source = "dto.employeeName")
     })
-    Employee dtoToEntity(EmployeeDto dto);
+    Employee.Entity dtoToEntity(Employee.Dto dto);
 
     Division.Dto entityToDto(Division.Entity entity);
 
