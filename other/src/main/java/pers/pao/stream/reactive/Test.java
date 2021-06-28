@@ -1,6 +1,5 @@
 package pers.pao.stream.reactive;
 
-import com.google.common.base.Throwables;
 import lombok.SneakyThrows;
 
 import java.util.LinkedList;
@@ -36,7 +35,7 @@ class EndSubscriber<T> implements Flow.Subscriber<T> {
 
     @Override
     public void onError(Throwable throwable) {
-        System.out.println(Throwables.getStackTraceAsString(throwable));
+        System.out.println(throwable.getMessage());
     }
 
     @Override
