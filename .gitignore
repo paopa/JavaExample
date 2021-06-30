@@ -13,3 +13,5 @@ other/src/main/java/META-INF/
 ### gradle ###
 **/.gradle
 **/build
+
+**/etc/jvm.properties

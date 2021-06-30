@@ -1,0 +1,85 @@
+plugins {
+  id 'java'
+  id 'nu.studer.jooq' version '5.2.1' //https://github.com/etiennestuder/gradle-jooq-plugin
+}
+
+group 'per.pao.practice'
+version '1.0-SNAPSHOT'
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+  testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+  // lombok
+  compileOnly 'org.projectlombok:lombok:1.18.20'
+  annotationProcessor 'org.projectlombok:lombok:1.18.20'
+  // jooq
+  compileOnly 'org.jooq:jooq:3.14.11'
+  jooqGenerator 'org.postgresql:postgresql:42.2.15'
+  //postgresql
+  implementation 'org.postgresql:postgresql:42.2.15'
+}
+
+test {
+  useJUnitPlatform()
+  testLogging.events("passed", "skipped", "failed")
+}
+
+System.getProperties()
+        .load(new FileInputStream(System.getProperty("user.dir")+"/etc/jvm.properties"))
+
+//System.getProperties().each {s -> System.out.println(s)}
+
+jooq {
+  version = '3.14.11'  // default (can be omitted)
+  edition = nu.studer.gradle.jooq.JooqEdition.OSS  // default (can be omitted)
+
+  configurations {
+    main {  // name of the jOOQ configuration
+      generateSchemaSourceOnCompilation = true  // default (can be omitted)
+      generationTool {
+        logging = org.jooq.meta.jaxb.Logging.WARN
+        jdbc {
+          driver = 'org.postgresql.Driver'
+          url = 'jdbc:postgresql://localhost:5432/' + System.getProperty("database")
+          user = System.getProperty("user")
+          password = System.getProperty("pwd")
+        }
+        generator {
+          name = 'org.jooq.codegen.DefaultGenerator'
+          database {
+            name = 'org.jooq.meta.postgres.PostgresDatabase'
+            inputSchema = 'public'
+            includes = '.*'
+            forcedTypes {
+              forcedType {
+                name = 'varchar'
+                includeExpression = '.*'
+                includeTypes = 'JSONB?'
+              }
+            }
+          }
+          generate {
+            routines = false
+            deprecated = false
+            records = true
+            immutablePojos = true
+            fluentSetters = true
+            keys = false
+            sequences = false
+          }
+          target {
+            packageName = 'per.pao.practice.entity'
+            directory = 'build/generated-src/jooq/main'  // default (can be omitted)
+          }
+          strategy.name = 'org.jooq.codegen.DefaultGeneratorStrategy'
+        }
+      }
+    }
+  }
+}
+
+tasks.named('generateJooq').configure { allInputsDeclared = true }
