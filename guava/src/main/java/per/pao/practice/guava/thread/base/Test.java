@@ -1,4 +1,4 @@
-package per.pao.practice.guava.thread.listenable;
+package per.pao.practice.guava.thread.base;
 
 import com.google.common.util.concurrent.AsyncCallable;
 import com.google.common.util.concurrent.Callables;

@@ -1,4 +1,4 @@
-package per.pao.practice.guava.thread.multi;
+package per.pao.practice.guava.thread.multi.future;
 
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
