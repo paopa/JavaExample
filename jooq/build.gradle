@@ -1,5 +1,6 @@
 plugins {
   id 'java'
+  id 'application'
   id 'nu.studer.jooq' version '5.2.1' //https://github.com/etiennestuder/gradle-jooq-plugin
 }
 
@@ -66,7 +67,8 @@ jooq {
             routines = false
             deprecated = false
             records = true
-            immutablePojos = true
+            pojos = true
+            immutablePojos = false
             fluentSetters = true
             keys = false
             sequences = false
