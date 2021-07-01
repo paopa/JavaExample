@@ -1,7 +1,6 @@
 package per.pao.practice.update;
 
 import org.jooq.DSLContext;
-import per.pao.practice.entity.Tables;
 import per.pao.practice.entity.tables.pojos.Author;
 import per.pao.practice.entity.tables.records.AuthorRecord;
 import per.pao.practice.tool.ConnectionFactory;
