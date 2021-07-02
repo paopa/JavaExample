@@ -11,15 +11,15 @@ public final class Test
     {
         Tool tool1 = A.A11;
         Tool tool2 = A.A21;
-        System.out.println(Convertor.search(Type.TYPE_1, tool1.hashCode()));
-        System.out.println(Convertor.search(Type.TYPE_2, tool2.hashCode()));
+        System.out.println(Converter.search(Type.TYPE_1, tool1.hashCode()));
+        System.out.println(Converter.search(Type.TYPE_2, tool2.hashCode()));
         System.out.println("-----");
-        System.out.println(Convertor.search(Type.TYPE_1, 123));
-        System.out.println(Convertor.search(Type.TYPE_2, 123));
+        System.out.println(Converter.search(Type.TYPE_1, 123));
+        System.out.println(Converter.search(Type.TYPE_2, 123));
     }
 }
 
-final class Convertor
+final class Converter
 {
     private static final Table<Type, Integer, B> TABLE = HashBasedTable.create();
     private static final Object UNDEFINED_OBJECT = new Object();
