@@ -30,7 +30,7 @@ test {
 }
 
 System.getProperties()
-        .load(new FileInputStream(System.getProperty("user.dir")+"/etc/jvm.properties"))
+        .load(new FileInputStream(project.projectDir.toString() + "/etc/jvm.properties"))
 
 //System.getProperties().each {s -> System.out.println(s)}
 
