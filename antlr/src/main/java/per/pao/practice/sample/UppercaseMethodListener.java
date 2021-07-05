@@ -12,6 +12,11 @@ public class UppercaseMethodListener
 {
     private final List<String> errors = new ArrayList();
 
+    public List<String> getErrors()
+    {
+        return errors;
+    }
+
     @Override
     public void enterMethodDeclarator(Java8Parser.MethodDeclaratorContext ctx)
     {
