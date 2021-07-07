@@ -1,0 +1,31 @@
+plugins {
+  id 'java'
+}
+
+group 'per.pao.practice'
+version '1.0-SNAPSHOT'
+
+repositories {
+  mavenCentral()
+}
+
+def airliftVersion = 205
+
+dependencies {
+  testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+  testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+  // https://mvnrepository.com/artifact/io.airlift/airbase
+  implementation group: 'io.airlift', name: 'airbase', version: '112', ext: 'pom'
+  implementation group: 'com.google.inject', name: 'guice', version: '5.0.1'
+  implementation group: 'javax.ws.rs', name: 'javax.ws.rs-api', version: '2.1.1'
+  implementation group: 'io.airlift', name: 'bootstrap', version: airliftVersion
+  implementation group: 'io.airlift', name: 'http-server', version: airliftVersion
+  implementation group: 'io.airlift', name: 'json', version: airliftVersion
+  implementation group: 'io.airlift', name: 'node', version: airliftVersion
+  implementation group: 'io.airlift', name: 'event', version: airliftVersion
+  implementation group: 'io.airlift', name: 'jaxrs', version: airliftVersion
+}
+
+test {
+  useJUnitPlatform()
+}
