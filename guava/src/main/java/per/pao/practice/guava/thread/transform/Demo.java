@@ -16,8 +16,12 @@ public class Demo
         ListenableFuture<String> future = Futures.submit(() -> "xxxx", executor);
         ListenableFuture<Object> transform = Futures.transform(
                 future,
-                x -> x + "--suffix",
+                x -> {
+                    System.out.println(Thread.currentThread().getName());
+                    return x + "--suffix";
+                },
                 executor);
+        System.out.println("out");
         System.out.println(transform.get());
     }
 }

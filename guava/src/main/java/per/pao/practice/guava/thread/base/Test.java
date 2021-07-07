@@ -20,8 +20,8 @@ public class Test
         ExecutorService threadPool = Executors.newCachedThreadPool();
         ListeningExecutorService service = MoreExecutors.listeningDecorator(threadPool);
         try {
-//            submit(service);
-            submitAsync(service);
+            submit(service);
+//            submitAsync(service);
         }
         finally {
             service.shutdown();
@@ -69,6 +69,7 @@ public class Test
             Thread.sleep(4000);
             return "output string";
         });
+        Thread.sleep(2000);
         System.out.println("print first");
         String result = task.get();
         System.out.println(result);
