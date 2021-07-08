@@ -1,4 +1,4 @@
-package per.pao.example;
+package per.pao.practice;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.bootstrap.ServerBootstrap;
@@ -12,14 +12,10 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
-import per.pao.example.decoder.RequestDecoder;
-import per.pao.example.decoder.ResponseDecoder;
-import per.pao.example.encoder.RequestEncoder;
-import per.pao.example.encoder.ResponseEncoder;
-import per.pao.example.handler.ClientHandler;
-import per.pao.example.handler.ProcessingHandler;
-import per.pao.example.handler.SimpleProcessingHandler;
-import per.pao.example.handler.StringHandler;
+import per.pao.practice.decoder.ResponseDecoder;
+import per.pao.practice.encoder.RequestEncoder;
+import per.pao.practice.handler.ClientHandler;
+import per.pao.practice.handler.StringHandler;
 
 @Slf4j
 public class Starter

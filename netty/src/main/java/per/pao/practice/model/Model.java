@@ -1,4 +1,4 @@
-package per.pao.example.model;
+package per.pao.practice.model;
 
 import lombok.Data;
 

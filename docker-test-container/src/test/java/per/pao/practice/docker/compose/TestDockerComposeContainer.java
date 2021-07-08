@@ -1,4 +1,4 @@
-package per.pao.example.docker.compose;
+package per.pao.practice.docker.compose;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.platform.commons.annotation.Testable;
 import org.testcontainers.containers.DockerComposeContainer;
 import org.testcontainers.junit.jupiter.Testcontainers;
-import per.pao.example.tools.WebTool;
+import per.pao.practice.tools.WebTool;
 
 import java.nio.file.Paths;
 

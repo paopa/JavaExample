@@ -1,4 +1,4 @@
-package per.pao.example.tools;
+package per.pao.practice.tools;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

@@ -1,4 +1,4 @@
-package per.pao.example.postgresql;
+package per.pao.practice.postgresql;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;

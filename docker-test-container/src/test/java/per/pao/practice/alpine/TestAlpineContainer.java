@@ -1,4 +1,4 @@
-package per.pao.example.alpine;
+package per.pao.practice.alpine;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -7,9 +7,9 @@ import org.junit.platform.commons.annotation.Testable;
 import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
-import per.pao.example.tools.WebTool;
+import per.pao.practice.tools.WebTool;
 
-import static per.pao.example.tools.WebTool.request;
+import static per.pao.practice.tools.WebTool.request;
 
 @Testable
 @Testcontainers

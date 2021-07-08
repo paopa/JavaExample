@@ -1,9 +1,9 @@
-package per.pao.example.encoder;
+package per.pao.practice.encoder;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToByteEncoder;
-import per.pao.example.model.Model;
+import per.pao.practice.model.Model;
 
 public class ResponseEncoder
         extends MessageToByteEncoder<Model.Response>

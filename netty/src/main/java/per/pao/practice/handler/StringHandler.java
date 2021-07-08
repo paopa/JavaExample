@@ -1,4 +1,4 @@
-package per.pao.example.handler;
+package per.pao.practice.handler;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;

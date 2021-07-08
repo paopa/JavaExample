@@ -1,11 +1,11 @@
-package per.pao.example.handler;
+package per.pao.practice.handler;
 
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import lombok.extern.slf4j.Slf4j;
-import per.pao.example.model.Model;
+import per.pao.practice.model.Model;
 
 @Slf4j
 public class ProcessingHandler

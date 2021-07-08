@@ -1,4 +1,4 @@
-package per.pao.example.browser;
+package per.pao.practice.browser;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
