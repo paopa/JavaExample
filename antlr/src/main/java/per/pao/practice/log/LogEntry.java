@@ -42,4 +42,14 @@ public class LogEntry
     {
         return timestamp;
     }
+
+    @Override
+    public String toString()
+    {
+        return "LogEntry{" +
+                "level=" + level +
+                ", message='" + message + '\'' +
+                ", timestamp=" + timestamp +
+                '}';
+    }
 }
