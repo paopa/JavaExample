@@ -7,6 +7,8 @@ import javax.ws.rs.container.AsyncResponse;
 import javax.ws.rs.container.Suspended;
 import javax.ws.rs.core.MediaType;
 
+import java.util.concurrent.CompletableFuture;
+
 @Path("/v1/sample")
 public class SampleResource
 {
@@ -24,5 +26,22 @@ public class SampleResource
             throws Exception
     {
         response.resume("hello~~~");
+    }
+
+    @GET
+    @Path("/async-sleep")
+    @Produces(MediaType.APPLICATION_JSON)
+    public void asyncHelloWithSleep(@Suspended AsyncResponse response)
+    {
+        CompletableFuture.runAsync(() -> {
+            try {
+                Thread.sleep(2000);
+            }
+            catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            response.resume("hello!!~");
+        });
+        System.out.println("method asyncHelloWithSleep end");
     }
 }
