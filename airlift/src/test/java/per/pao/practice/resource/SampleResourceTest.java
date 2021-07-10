@@ -70,4 +70,18 @@ class SampleResourceTest
         System.out.println(response.body());
         assertThat(response.body()).isEqualTo("hello!!~");
     }
+
+    @Test
+    void testAsyncHelloWithTimeout()
+            throws IOException, InterruptedException
+    {
+        final HttpClient client = HttpClient.newBuilder().build();
+        final HttpResponse<String> response = client.send(
+                HttpRequest.newBuilder(URI.create("http://localhost:8080/v1/sample/async-timeout")).GET().build(),
+                HttpResponse.BodyHandlers.ofString());
+        System.out.println(response.headers().map());
+        System.out.println(response.body());
+        assertThat(response.headers().map().get(":status").get(0)).isEqualTo("503");
+        assertThat(response.body()).isEqualTo("Operation time out.");
+    }
 }
