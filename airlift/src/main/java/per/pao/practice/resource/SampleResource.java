@@ -9,6 +9,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.container.AsyncResponse;
 import javax.ws.rs.container.CompletionCallback;
 import javax.ws.rs.container.Suspended;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -19,6 +21,9 @@ import java.util.concurrent.TimeUnit;
 
 import static java.util.Objects.isNull;
 
+/**
+ * @see <a href=https://eclipse-ee4j.github.io/jersey.github.io/documentation/latest/jaxrs-resources.html#d0e2249>jaxrs-resources</a>
+ */
 @Path("/v1/sample")
 public class SampleResource
 {
@@ -134,5 +139,17 @@ public class SampleResource
                 e.printStackTrace();
             }
         });
+    }
+
+    @GET
+    @Path("/async-header")
+    @Produces(MediaType.APPLICATION_JSON)
+    public void asyncHelloWithHeaders(
+            @Context HttpHeaders httpHeaders,
+            @Suspended AsyncResponse response)
+    {
+        System.out.println(httpHeaders.getRequestHeaders());
+        CompletableFuture.runAsync(() ->
+                response.resume(Response.status(Response.Status.OK).build()));
     }
 }

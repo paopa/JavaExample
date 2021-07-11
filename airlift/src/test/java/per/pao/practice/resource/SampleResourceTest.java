@@ -123,4 +123,16 @@ class SampleResourceTest
         System.out.println(response.body());
         assertThat(response.body()).isEqualTo("hello-" + message);
     }
+
+    @Test
+    void testAsyncHelloWithHeaders()
+            throws IOException, InterruptedException
+    {
+        final HttpClient client = HttpClient.newBuilder().build();
+        final HttpResponse<String> response = client.send(
+                HttpRequest.newBuilder(URI.create("http://localhost:8080/v1/sample/async-header")).build(),
+                ofString());
+        System.out.println(response.headers().map());
+        assertThat(response.headers().map().get(":status").get(0)).isEqualTo("200");
+    }
 }

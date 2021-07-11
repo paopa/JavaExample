@@ -15,3 +15,5 @@ other/src/main/java/META-INF/
 **/build
 
 **/etc/jvm.properties
+
+/var

@@ -22,5 +22,5 @@ public class Starter
         bootstrap.strictConfig().initialize();
     }
 
-    private Starter(){}
+    private Starter() {}
 }
