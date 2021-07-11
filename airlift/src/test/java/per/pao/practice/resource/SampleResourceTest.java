@@ -97,4 +97,16 @@ class SampleResourceTest
         System.out.println(response.body());
         assertThat(response.body()).isEqualTo("hello!!");
     }
+
+    @Test
+    void testAsyncHelloWithChunked()
+            throws IOException, InterruptedException
+    {
+        final HttpClient client = HttpClient.newBuilder().build();
+        final HttpResponse<String> response = client.send(
+                HttpRequest.newBuilder(URI.create("http://localhost:8080/v1/sample/async-chunked")).build(),
+                ofString());
+        System.out.println(response.body());
+        assertThat(response.body()).isEqualTo("hello!!");
+    }
 }

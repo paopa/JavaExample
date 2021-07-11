@@ -1,5 +1,7 @@
 package per.pao.practice.resource;
 
+import org.glassfish.jersey.server.ChunkedOutput;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -9,6 +11,8 @@ import javax.ws.rs.container.Suspended;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import java.io.IOException;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
@@ -86,5 +90,31 @@ public class SampleResource
             System.out.println("before resume");
             response.resume("hello!!");
         });
+    }
+
+    @GET
+    @Path("/async-chunked")
+    @Produces(MediaType.APPLICATION_JSON)
+    public ChunkedOutput<String> asyncHelloWithChunked()
+    {
+        final ChunkedOutput<String> output = new ChunkedOutput<>(String.class);
+        CompletableFuture.runAsync(() -> {
+            try (output) {
+                List.of('h', 'e', 'l', 'l', 'o', '!', '!').forEach(character -> {
+                    try {
+                        Thread.sleep(1000);
+                        System.out.println(character);
+                        output.write(String.valueOf(character));
+                    }
+                    catch (InterruptedException | IOException e) {
+                        e.printStackTrace();
+                    }
+                });
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+        return output;
     }
 }
