@@ -4,6 +4,7 @@ import org.glassfish.jersey.server.ChunkedOutput;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.container.AsyncResponse;
 import javax.ws.rs.container.CompletionCallback;
@@ -116,5 +117,22 @@ public class SampleResource
             }
         });
         return output;
+    }
+
+    @GET
+    @Path("/async-param/{message}")
+    public void asyncHelloWithParameter(
+            @PathParam("message") final String message,
+            @Suspended final AsyncResponse response)
+    {
+        CompletableFuture.runAsync(() -> {
+            try {
+                Thread.sleep(2000);
+                response.resume("hello-" + message);
+            }
+            catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
     }
 }

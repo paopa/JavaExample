@@ -17,6 +17,7 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.UUID;
 
 import static java.net.http.HttpResponse.BodyHandlers.ofString;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -108,5 +109,18 @@ class SampleResourceTest
                 ofString());
         System.out.println(response.body());
         assertThat(response.body()).isEqualTo("hello!!");
+    }
+
+    @Test
+    void asyncHelloWithParameter()
+            throws IOException, InterruptedException
+    {
+        String message = UUID.randomUUID().toString();
+        final HttpClient client = HttpClient.newBuilder().build();
+        final HttpResponse<String> response = client.send(
+                HttpRequest.newBuilder(URI.create("http://localhost:8080/v1/sample/async-param/" + message)).build(),
+                ofString());
+        System.out.println(response.body());
+        assertThat(response.body()).isEqualTo("hello-" + message);
     }
 }
