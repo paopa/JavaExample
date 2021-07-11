@@ -18,6 +18,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
+import static java.net.http.HttpResponse.BodyHandlers.ofString;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class SampleResourceTest
@@ -44,7 +45,7 @@ class SampleResourceTest
         final HttpClient client = HttpClient.newBuilder().build();
         final HttpResponse<String> response = client.send(
                 HttpRequest.newBuilder().GET().uri(URI.create("http://localhost:8080/v1/sample")).build(),
-                HttpResponse.BodyHandlers.ofString());
+                ofString());
         System.out.println(response.body());
         assertThat(response.body()).isEqualTo("hello Airlift");
     }
@@ -66,7 +67,7 @@ class SampleResourceTest
         final HttpClient client = HttpClient.newBuilder().build();
         final HttpResponse<String> response = client.send(
                 HttpRequest.newBuilder().GET().uri(URI.create("http://localhost:8080/v1/sample/async-sleep")).build(),
-                HttpResponse.BodyHandlers.ofString());
+                ofString());
         System.out.println(response.body());
         assertThat(response.body()).isEqualTo("hello!!~");
     }
@@ -78,10 +79,22 @@ class SampleResourceTest
         final HttpClient client = HttpClient.newBuilder().build();
         final HttpResponse<String> response = client.send(
                 HttpRequest.newBuilder(URI.create("http://localhost:8080/v1/sample/async-timeout")).GET().build(),
-                HttpResponse.BodyHandlers.ofString());
+                ofString());
         System.out.println(response.headers().map());
         System.out.println(response.body());
         assertThat(response.headers().map().get(":status").get(0)).isEqualTo("503");
         assertThat(response.body()).isEqualTo("Operation time out.");
+    }
+
+    @Test
+    void testAsyncHelloWithCallback()
+            throws IOException, InterruptedException
+    {
+        final HttpClient client = HttpClient.newBuilder().build();
+        final HttpResponse<String> response = client.send(
+                HttpRequest.newBuilder(URI.create("http://localhost:8080/v1/sample/async-callback")).build(),
+                ofString());
+        System.out.println(response.body());
+        assertThat(response.body()).isEqualTo("hello!!");
     }
 }
