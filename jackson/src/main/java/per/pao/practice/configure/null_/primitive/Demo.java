@@ -8,7 +8,6 @@ import per.pao.practice.util.Mapper;
 public class Demo
 {
     public static void main(String[] args)
-            throws JsonProcessingException
     {
         try {
             final String json = "{ \"color\" : \"Black\", \"year\" : null }";
