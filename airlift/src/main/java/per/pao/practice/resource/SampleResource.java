@@ -1,7 +1,11 @@
 package per.pao.practice.resource;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.glassfish.jersey.server.ChunkedOutput;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -151,5 +155,53 @@ public class SampleResource
         System.out.println(httpHeaders.getRequestHeaders());
         CompletableFuture.runAsync(() ->
                 response.resume(Response.status(Response.Status.OK).build()));
+    }
+
+    @GET
+    @Path("/async-body")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void asyncHelloWithRequestBody(
+            RequestBody body,
+            @Suspended AsyncResponse response)
+    {
+        System.out.println(body);
+        CompletableFuture.runAsync(() -> response.resume(body));
+    }
+
+    public static class RequestBody
+    {
+        private int id;
+        private String name;
+
+        @JsonCreator
+        public RequestBody(
+                @JsonProperty("id") int id,
+                @JsonProperty("name") String name)
+        {
+            this.id = id;
+            this.name = name;
+        }
+
+        @JsonGetter("id")
+        public int getId()
+        {
+            return id;
+        }
+
+        @JsonGetter("name")
+        public String getName()
+        {
+            return name;
+        }
+
+        @Override
+        public String toString()
+        {
+            return "RequestBody{" +
+                    "id=" + id +
+                    ", name='" + name + '\'' +
+                    '}';
+        }
     }
 }
