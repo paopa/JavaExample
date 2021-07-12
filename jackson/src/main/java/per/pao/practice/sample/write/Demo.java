@@ -1,4 +1,4 @@
-package per.pao.practice.sample;
+package per.pao.practice.sample.write;
 
 import lombok.Data;
 import per.pao.practice.util.Mapper;
