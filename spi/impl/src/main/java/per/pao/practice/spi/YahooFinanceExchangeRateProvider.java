@@ -23,7 +23,7 @@ public class YahooFinanceExchangeRateProvider
         public List<Quote> getQuotes(String baseCurrency, LocalDate date)
         {
             System.out.println("fetch data from Yahoo API");
-            return null;
+            return List.of(new Quote(baseCurrency + "-YAHOO", date));
         }
     }
 }

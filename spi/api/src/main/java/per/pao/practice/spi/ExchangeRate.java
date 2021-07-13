@@ -8,7 +8,7 @@ public class ExchangeRate
     private static final ServiceLoader<ExchangeRateProvider> LOADER
             = ServiceLoader.load(ExchangeRateProvider.class);
 
-    public Iterator<ExchangeRateProvider> providers(boolean refresh)
+    public static Iterator<ExchangeRateProvider> providers(boolean refresh)
     {
         if (refresh) {
             LOADER.reload();
