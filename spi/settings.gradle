@@ -1,0 +1,5 @@
+rootProject.name = 'spi'
+include 'api'
+include 'impl'
+include 'app'
+
