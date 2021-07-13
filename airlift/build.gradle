@@ -13,8 +13,11 @@ repositories {
 def airliftVersion = 205
 
 dependencies {
+  // test
   testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
   testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+  testImplementation 'org.assertj:assertj-core:3.18.1'
+  // core
   implementation group: 'com.google.inject', name: 'guice', version: '5.0.1'
   implementation group: 'javax.ws.rs', name: 'javax.ws.rs-api', version: '2.1.1'
   implementation group: 'io.airlift', name: 'bootstrap', version: airliftVersion
@@ -23,7 +26,9 @@ dependencies {
   implementation group: 'io.airlift', name: 'node', version: airliftVersion
   implementation group: 'io.airlift', name: 'event', version: airliftVersion
   implementation group: 'io.airlift', name: 'jaxrs', version: airliftVersion
-  testImplementation 'org.assertj:assertj-core:3.18.1'
+  implementation group: 'io.airlift', name: 'configuration', version: airliftVersion
+  implementation group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
+  implementation group: 'javax.inject', name: 'javax.inject', version: '1'
 }
 
 test {

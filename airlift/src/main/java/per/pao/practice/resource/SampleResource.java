@@ -4,7 +4,9 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.glassfish.jersey.server.ChunkedOutput;
+import per.pao.practice.module.config.SampleConfig;
 
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -31,6 +33,22 @@ import static java.util.Objects.isNull;
 @Path("/v1/sample")
 public class SampleResource
 {
+    private final SampleConfig config;
+
+    @Inject
+    public SampleResource(SampleConfig config)
+    {
+        this.config = config;
+    }
+
+    @GET
+    @Path("/config")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String helloFromConfig()
+    {
+        return config.getHelloMessage();
+    }
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String hello()
