@@ -6,7 +6,7 @@ public class App
 {
     public static void main(String[] args)
     {
-        final ServiceLoader<Animal> LOADER = ServiceLoader.load(Animal.class);
-        LOADER.iterator().forEachRemaining(provider -> provider.eat());
+        final ServiceLoader<Animal> loader = ServiceLoader.load(Animal.class);
+        loader.iterator().forEachRemaining(provider -> provider.eat());
     }
 }
