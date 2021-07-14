@@ -1,2 +1,4 @@
 rootProject.name = 'platform-module-system'
+include 'hello.module'
+include 'app'
 
