@@ -20,3 +20,10 @@ test {
   useJUnitPlatform()
   testLogging.events("passed", "skipped", "failed")
 }
+
+subprojects {
+  apply plugin: "java"
+  java {
+    modularity.inferModulePath = true
+  }
+}

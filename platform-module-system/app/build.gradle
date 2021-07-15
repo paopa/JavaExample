@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'application'
 }
 
 group 'per.pao.practice'
@@ -17,6 +18,12 @@ dependencies {
 
 java {
     modularity.inferModulePath = true
+}
+
+application {
+    mainModule = 'platform.module.system.app' // name defined in module-info.java
+    mainClass = 'per.pao.practice.App'
+    // DO NOT USE   mainClassName = 'org.gradle.sample.Main'
 }
 
 test {
