@@ -2,16 +2,17 @@ group 'per.pao.practice'
 version '1.0-SNAPSHOT'
 
 repositories {
-    mavenCentral()
+  mavenCentral()
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
-    implementation project(":api")
-    runtime project(":impl-default")
+  testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+  testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+  implementation project(":api")
+  runtimeOnly project(":impl-default")
+  runtimeOnly project(":impl-plugin-c")
 }
 
 test {
-    useJUnitPlatform()
+  useJUnitPlatform()
 }

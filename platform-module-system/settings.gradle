@@ -4,4 +4,5 @@ include 'app'
 include 'api'
 include 'impl-default'
 include 'tester'
+include 'impl-plugin-c'
 
