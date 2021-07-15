@@ -9,5 +9,6 @@ public class Demo
     {
         final Plugin plugin = Provider.provide(Plugin.class, "APlugin");
         plugin.start();
+        Provider.provide(Plugin.class, "BPlugin").start();
     }
 }
