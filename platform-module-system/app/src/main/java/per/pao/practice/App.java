@@ -15,8 +15,7 @@ public class App
 //        Test.print();
         // test uses ... directive
         final ServiceLoader<IHello> loader = ServiceLoader.load(IHello.class);
-        loader.forEach(service->service.sayHello());
-//        final IHello service = loader.findFirst().get();
-//        service.sayHello();
+        final IHello service = loader.findFirst().get();
+        service.sayHello();
     }
 }

@@ -16,10 +16,6 @@ dependencies {
     implementation project(':hello.module')
 }
 
-java {
-    modularity.inferModulePath = true
-}
-
 application {
     mainModule = 'platform.module.system.app' // name defined in module-info.java
     mainClass = 'per.pao.practice.App'

@@ -24,6 +24,6 @@ test {
 subprojects {
   apply plugin: "java"
   java {
-    modularity.inferModulePath = true
+    modularity.inferModulePath.set(true)
   }
 }
