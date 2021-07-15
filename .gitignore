@@ -1,7 +1,7 @@
 # folder
 /.idea
 */target
-/out
+**/out
 other/src/main/java/META-INF/
 
 # file
