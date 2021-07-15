@@ -1,5 +1,6 @@
 package per.pao.practice;
 
+import per.pao.modules.api.player.Player;
 import per.pao.modules.hello.Hello;
 import per.pao.modules.hello.IHello;
 
